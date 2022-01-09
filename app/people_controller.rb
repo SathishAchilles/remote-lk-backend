@@ -1,3 +1,7 @@
+# allows to render normalized People data
+require 'csv'
+require 'time'
+
 class PeopleController
   SUPPORTED_FORMATS = {
     dollar: '$',
