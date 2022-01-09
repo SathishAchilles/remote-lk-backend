@@ -1,18 +1,5 @@
-# allows to render normalized People data
-require 'csv'
-require 'time'
-
+# allows to render normalized Person data
 class PeopleController
-  SUPPORTED_FORMATS = {
-    dollar: '$',
-    percent: '%'
-  }.freeze
-
-  CITY_ABBREVIATIONS = {
-    'LA' => 'Los Angeles',
-    'NYC' => 'New York City'
-  }.freeze
-
   def initialize(params)
     @params = params
     @table = build_table
