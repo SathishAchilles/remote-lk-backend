@@ -19,8 +19,7 @@ class PeopleController
   end
 
   def normalize
-    @table.sort_by { |row| row[normalize_params[:order]] }
-          .map { |row| PeopleSerializer.new(row.slice(:first_name, :city, :birthdate)).to_s }
+    @table.sort_by { |row| row[normalize_params[:order]] }.map { |row| PeopleSerializer.new(row).to_s }
   end
 
   private
