@@ -9,4 +9,8 @@ class PeopleController
   private
 
   attr_reader :params
+
+  def normalize_params
+    params.slice(:dollar_format, :percent_format, :order)
+  end
 end
