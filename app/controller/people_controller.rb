@@ -19,8 +19,8 @@ class PeopleController
   end
 
   def normalize
-    @table.sort_by { |row| row[normalize_params[:order]].strip }
-          .map { |row| row.slice(:first_name, :city, :birthdate).values.join(', ') }
+    @table.sort_by { |row| row[normalize_params[:order]] }
+          .map { |row| PeopleSerializer.new(row.slice(:first_name, :city, :birthdate)).to_s }
   end
 
   private
@@ -44,7 +44,7 @@ class PeopleController
           row[:city] =
             CITY_ABBREVIATIONS[row[:city]]
         end
-        row[:birthdate] = Time.parse(row[:birthdate]).strftime('%-m/%-d/%Y')
+        row[:birthdate] = Time.parse(row[:birthdate])
         row
       end
     end
