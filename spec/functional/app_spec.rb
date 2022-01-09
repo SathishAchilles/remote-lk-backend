@@ -9,7 +9,7 @@ RSpec.describe 'App Functional Test' do
       {
         dollar_format: File.read('spec/fixtures/people_by_dollar.txt'),
         percent_format: File.read('spec/fixtures/people_by_percent.txt'),
-        order: :first_name,
+        order: :first_name
       }
     end
     let(:people_controller) { PeopleController.new(params) }
@@ -22,7 +22,7 @@ RSpec.describe 'App Functional Test' do
         'Elliot, New York City, 5/4/1947',
         'Mckayla, Atlanta, 5/29/1986',
         'Rhiannon, Los Angeles, 4/30/1974',
-        'Rigoberto, New York City, 1/5/1962',
+        'Rigoberto, New York City, 1/5/1962'
       ]
     end
   end
