@@ -2,7 +2,7 @@
 class PeopleController
   def initialize(params)
     @params = params
-    @table = build_table
+    @people = populate_people_table
   end
 
   def normalize
@@ -11,28 +11,13 @@ class PeopleController
 
   private
 
-  attr_reader :params, :table
+  attr_reader :params, :people
 
   def normalize_params
     params.slice(:dollar_format, :percent_format, :order)
   end
 
-  def build_table
-    SUPPORTED_FORMATS.flat_map do |format_key, delimiter|
-      CSV.parse(normalize_params["#{format_key}_format".to_sym],
-                col_sep: delimiter,
-                headers: true,
-                header_converters: :symbol)
-         .map do |row|
-        row = row.to_hash
-        row.transform_values!(&:strip)
-        if CITY_ABBREVIATIONS.key?(row[:city])
-          row[:city] =
-            CITY_ABBREVIATIONS[row[:city]]
-        end
-        row[:birthdate] = Time.parse(row[:birthdate])
-        row
-      end
-    end
+  def populate_people_table
+    People.new(PeopleParser.call(normalize_params))
   end
 end
