@@ -1,4 +1,9 @@
 class PeopleController
+  SUPPORTED_FORMATS = {
+    dollar: '$',
+    percent: '%'
+  }.freeze
+
   def initialize(params)
     @params = params
   end
