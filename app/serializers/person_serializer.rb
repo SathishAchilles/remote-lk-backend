@@ -1,3 +1,4 @@
+# serializes person
 class PersonSerializer
   def initialize(people)
     @people = people
