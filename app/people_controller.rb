@@ -19,6 +19,8 @@ class PeopleController
   end
 
   def normalize
+    @table.sort_by { |row| row[normalize_params[:order]].strip }
+          .map { |row| row.slice(:first_name, :city, :birthdate).values.join(', ') }
   end
 
   private
