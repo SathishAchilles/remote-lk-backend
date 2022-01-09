@@ -1,0 +1,6 @@
+supported_formats:
+  dollar: $
+  percent: '%'
+city_abbreviations:
+  LA: Los Angeles
+  NYC: New York City
