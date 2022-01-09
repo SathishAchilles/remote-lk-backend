@@ -6,7 +6,7 @@ class PeopleController
   end
 
   def normalize
-    @table.sort_by { |row| row[normalize_params[:order]] }.map { |row| PeopleSerializer.new(row).to_s }
+    people.order(normalize_params[:order]).map { |row| PersonSerializer.new(row).to_s }
   end
 
   private
