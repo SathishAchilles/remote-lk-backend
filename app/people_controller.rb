@@ -4,6 +4,11 @@ class PeopleController
     percent: '%'
   }.freeze
 
+  CITY_ABBREVIATIONS = {
+    'LA' => 'Los Angeles',
+    'NYC' => 'New York City'
+  }.freeze
+
   def initialize(params)
     @params = params
   end
